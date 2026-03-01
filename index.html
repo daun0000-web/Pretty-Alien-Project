@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>도전! 외계인 꾸미기</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- 버튼 호버/클릭 이미지 선로드 (첫 hover 시 깜빡임 방지) -->
+  <link rel="preload" href="assets/button/button_skip_hover.png" as="image">
+  <link rel="preload" href="assets/button/button_skip_click.png" as="image">
+  <link rel="preload" href="assets/button/button_replay_hover.png" as="image">
+  <link rel="preload" href="assets/button/button_replay_click.png" as="image">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas" width="1280" height="720"></canvas>
+    <div id="ui-overlay">
+      <div id="skip-btn" class="hidden">건너뛰기</div>
+      <button type="button" id="restart-btn" class="hidden">다시하기</button>
+    </div>
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

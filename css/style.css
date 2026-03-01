@@ -1,0 +1,175 @@
+/**
+ * 외계인/우주 컨셉 - 2000년대 플래시게임 감성
+ * 색상·스타일 변경 시 :root 변수만 수정하면 됩니다.
+ */
+@font-face {
+  font-family: 'Pinkfong Baby Shark';
+  src: url('../assets/fonts/Pinkfong Baby Shark Font_ Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-family: 'Pinkfong Baby Shark', 'Comic Sans MS', sans-serif;
+  /* 메인 배경 */
+  --bg-main: #E6D6FF;
+  /* 포인트(강조) */
+  --accent: #FFF4A3;
+  /* 버튼 강조 */
+  --btn-accent: #C8A2FF;
+  /* 텍스트 */
+  --text: #3A2E5E;
+  /* 텍스트 보조(연하게) */
+  --text-muted: #5a4d7a;
+  /* 패널/카드 배경 */
+  --panel-bg: #f5eeff;
+  /* 패널 테두리 (두꺼운 외곽선) */
+  --panel-border: #3A2E5E;
+  --panel-border-width: 4px;
+  /* 패널 그림자 */
+  --shadow: 0 6px 0 #3A2E5E, 0 8px 20px rgba(58, 46, 94, 0.25);
+  /* 버튼 그림자(볼륨감) */
+  --btn-shadow: 0 4px 0 #9b7acc, 0 6px 12px rgba(58, 46, 94, 0.2);
+  --btn-shadow-hover: 0 2px 0 #9b7acc, 0 4px 10px rgba(58, 46, 94, 0.25);
+  /* 둥근 모서리 */
+  --radius-panel: 20px;
+  --radius-btn: 999px;
+  --radius-card: 16px;
+  /* 등급 색상 (시각적 구분) */
+  --grade-s: #e6b800;
+  --grade-a: #8899aa;
+  --grade-b: #b87333;
+  --grade-c: #8b5a9e;
+  --grade-d: #6b5b7a;
+  /* 슬롯/카드 내부 */
+  --slot-fill: rgba(58, 46, 94, 0.06);
+  --slot-stroke: rgba(58, 46, 94, 0.25);
+  --slot-stroke-active: rgba(200, 162, 255, 0.8);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-family);
+  color: var(--text);
+  overflow: hidden;
+}
+
+/* 게임 영역 = 카드/패널 (그림자 + 두꺼운 테두리) */
+#game-container {
+  position: relative;
+  background: var(--panel-bg);
+  border: var(--panel-border-width) solid var(--panel-border);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+#game-canvas {
+  display: block;
+  background: var(--bg-main);
+  width: 100%;
+  height: 100%;
+}
+
+#ui-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  font-family: var(--font-family);
+}
+
+#ui-overlay > * {
+  pointer-events: auto;
+}
+
+/* 건너뛰기 버튼: button_skip_* */
+#skip-btn {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 180px;
+  height: 66px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text);
+  background: transparent url('../assets/button/button_skip_default.png') no-repeat center;
+  background-size: contain;
+  transition: background-image 0.05s ease;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+#skip-btn:hover {
+  background-image: url('../assets/button/button_skip_hover.png');
+}
+
+#skip-btn:active {
+  background-image: url('../assets/button/button_skip_click.png');
+}
+
+#skip-btn.hidden {
+  display: none;
+}
+
+/* 다시하기 버튼 (결과 화면, 건너뛰기와 동일 위치): button_replay_* */
+#restart-btn {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 180px;
+  height: 66px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text);
+  background: transparent url('../assets/button/button_replay_default.png') no-repeat center;
+  background-size: contain;
+  transition: background-image 0.05s ease;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+#restart-btn:hover {
+  background-image: url('../assets/button/button_replay_hover.png');
+}
+
+#restart-btn:active {
+  background-image: url('../assets/button/button_replay_click.png');
+}
+
+#restart-btn.hidden {
+  display: none;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+  #game-container {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}
